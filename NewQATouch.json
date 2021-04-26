@@ -1,0 +1,1789 @@
+{
+	"info": {
+		"_postman_id": "95f09a1f-2684-475a-a2a3-6821a2e4d4a4",
+		"name": "QATouch API (HTTPS)",
+		"description": "Before you start using our **API**, your first step is to obtain a `api-token` from your QA Touch site. Once you obtain the token, then you are ready to go.\n\n## Requirements\n\nAll the API endpoints requires couple of headers, so that we can authenticate you before processing the request.\n\n**Required Headers**\n1. domain\n2. api-token\n\n## Pagination\n\nBy default, all the endpoints which returns more than 50 rows are paginated. You can move to another page by adding parameters to the request.\n\nFor example : `https://api.qatouch.com/api/v1/getAllProjects?page=2`\n\nThe above example will return the data which are avialable in second page of the request.\n\nNote: If 405 method error is dislayed, kindly add the https in the api url",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Projects",
+			"item": [
+				{
+					"name": "List all the projects",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "domain",
+								"type": "text",
+								"value": "{{domain}}",
+								"description": "Your QA Touch domain."
+							},
+							{
+								"key": "api-token",
+								"value": "{{api-token}}",
+								"description": "Your secret api-token.",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "https://api.qatouch.com/api/v1/getAllProjects",
+							"protocol": "https",
+							"host": [
+								"api",
+								"qatouch",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"getAllProjects"
+							]
+						},
+						"description": "Provides the list of projects created for your domain.\n"
+					},
+					"response": []
+				},
+				{
+					"name": "Count of the total projects available.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "Your QA Touch domain.",
+								"key": "api-token",
+								"type": "text",
+								"value": "{{api-token}}"
+							},
+							{
+								"description": "Your secret api-token.",
+								"key": "domain",
+								"type": "text",
+								"value": "{{domain}}"
+							}
+						],
+						"url": {
+							"raw": "https://api.qatouch.com/api/v1/count/allProjects",
+							"protocol": "https",
+							"host": [
+								"api",
+								"qatouch",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"count",
+								"allProjects"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Project",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"description": "Your secret api-token.",
+								"key": "api-token",
+								"type": "text",
+								"value": "{{api-token}}"
+							},
+							{
+								"description": "Your QA Touch domain.",
+								"key": "domain",
+								"type": "text",
+								"value": "{{domain}}"
+							}
+						],
+						"url": {
+							"raw": "https://api.qatouch.com/api/v1/project?name=Grpp12",
+							"protocol": "https",
+							"host": [
+								"api",
+								"qatouch",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"project"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "Grpp12"
+								},
+								{
+									"key": "Key",
+									"value": "xtyr",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Test Cases",
+			"item": [
+				{
+					"name": "List all the Test Cases For a Project",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "api-token",
+								"type": "text",
+								"value": "{{api-token}}",
+								"description": "Your QA Touch domain."
+							},
+							{
+								"key": "domain",
+								"type": "text",
+								"value": "{{domain}}",
+								"description": "Your secret api-token."
+							}
+						],
+						"url": {
+							"raw": "https://api.qatouch.com/api/v1/getAllTestCases/ZxL5",
+							"protocol": "https",
+							"host": [
+								"api",
+								"qatouch",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"getAllTestCases",
+								"ZxL5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Count of the Total Test Cases Available For a Project",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "api-token",
+								"type": "text",
+								"value": "{{api-token}}",
+								"description": "Your QA Touch domain."
+							},
+							{
+								"key": "domain",
+								"type": "text",
+								"value": "{{domain}}",
+								"description": "Your secret api-token."
+							}
+						],
+						"url": {
+							"raw": "https://api.qatouch.com/api/v1/count/allTestCases/ZxL5",
+							"protocol": "https",
+							"host": [
+								"api",
+								"qatouch",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"count",
+								"allTestCases",
+								"ZxL5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List all the Modules available for the Project",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "Your QA Touch domain.",
+								"key": "api-token",
+								"type": "text",
+								"value": "{{api-token}}"
+							},
+							{
+								"description": "Your secret api-token.",
+								"key": "domain",
+								"type": "text",
+								"value": "{{domain}}"
+							}
+						],
+						"url": {
+							"raw": "https://api.qatouch.com/api/v1/getAllModules/ZxL5",
+							"protocol": "https",
+							"host": [
+								"api",
+								"qatouch",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"getAllModules",
+								"ZxL5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a Module",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"description": "Your QA Touch domain.",
+								"key": "api-token",
+								"type": "text",
+								"value": "{{api-token}}"
+							},
+							{
+								"description": "Your secret api-token.",
+								"key": "domain",
+								"type": "text",
+								"value": "{{domain}}"
+							}
+						],
+						"url": {
+							"raw": "https://api.qatouch.com/api/v1/module?moduleName=Grpp10&projectKey=ZxL5",
+							"protocol": "https",
+							"host": [
+								"api",
+								"qatouch",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"module"
+							],
+							"query": [
+								{
+									"key": "moduleName",
+									"value": "Grpp10"
+								},
+								{
+									"key": "projectKey",
+									"value": "ZxL5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create new Test Case in a Project",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"description": "Your QA Touch domain.",
+								"key": "api-token",
+								"type": "text",
+								"value": "{{api-token}}"
+							},
+							{
+								"description": "Your secret api-token.",
+								"key": "domain",
+								"type": "text",
+								"value": "{{domain}}"
+							}
+						],
+						"url": {
+							"raw": "https://api.qatouch.com/api/v1/testCase?projectKey=ZxL5&sectionKey=nLZy6&caseTitle=CaseT",
+							"protocol": "https",
+							"host": [
+								"api",
+								"qatouch",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"testCase"
+							],
+							"query": [
+								{
+									"key": "projectKey",
+									"value": "ZxL5",
+									"description": "Your Project Key"
+								},
+								{
+									"key": "sectionKey",
+									"value": "nLZy6",
+									"description": "Your Section Key"
+								},
+								{
+									"key": "caseTitle",
+									"value": "CaseT",
+									"description": "You Test Case Title"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Releases",
+			"item": [
+				{
+					"name": "List all the Releases available for a project",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "Your QA Touch domain.",
+								"key": "api-token",
+								"type": "text",
+								"value": "{{api-token}}"
+							},
+							{
+								"description": "Your secret api-token.",
+								"key": "domain",
+								"type": "text",
+								"value": "{{domain}}"
+							}
+						],
+						"url": {
+							"raw": "https://api.qatouch.com/api/v1/getAllMilestones/ZxL5",
+							"protocol": "https",
+							"host": [
+								"api",
+								"qatouch",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"getAllMilestones",
+								"ZxL5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Count of the Total Releases Available for a Project",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "Your QA Touch domain.",
+								"key": "api-token",
+								"type": "text",
+								"value": "{{api-token}}"
+							},
+							{
+								"description": "Your secret api-token.",
+								"key": "domain",
+								"type": "text",
+								"value": "{{domain}}"
+							}
+						],
+						"url": {
+							"raw": "https://api.qatouch.com/api/v1/count/allMilestones/ZxL5",
+							"protocol": "https",
+							"host": [
+								"api",
+								"qatouch",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"count",
+								"allMilestones",
+								"ZxL5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a New Release in Your Project",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"description": "Your QA Touch domain.",
+								"key": "api-token",
+								"type": "text",
+								"value": "{{api-token}}"
+							},
+							{
+								"description": "Your secret api-token.",
+								"key": "domain",
+								"type": "text",
+								"value": "{{domain}}"
+							}
+						],
+						"url": {
+							"raw": "https://api.qatouch.com/api/v1/milestone?projectKey=ZxL5&milestone=apidemo",
+							"protocol": "https",
+							"host": [
+								"api",
+								"qatouch",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"milestone"
+							],
+							"query": [
+								{
+									"key": "projectKey",
+									"value": "ZxL5",
+									"description": "Project Key under which the Release to be created\n"
+								},
+								{
+									"key": "milestone",
+									"value": "apidemo",
+									"description": "Name of the release to be created\n"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Test Runs",
+			"item": [
+				{
+					"name": "Count of all the Test Runs Available for a Project",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "api-token",
+								"type": "text",
+								"value": "{{api-token}}",
+								"description": "Your QA Touch domain."
+							},
+							{
+								"key": "domain",
+								"type": "text",
+								"value": "{{domain}}",
+								"description": "Your secret api-token."
+							}
+						],
+						"url": {
+							"raw": "https://api.qatouch.com/api/v1/count/allTestRuns/ZxL5",
+							"protocol": "https",
+							"host": [
+								"api",
+								"qatouch",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"count",
+								"allTestRuns",
+								"ZxL5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List all the Test Runs for the project",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "api-token",
+								"type": "text",
+								"value": "{{api-token}}",
+								"description": "Your QA Touch domain."
+							},
+							{
+								"key": "domain",
+								"type": "text",
+								"value": "{{domain}}",
+								"description": "Your secret api-token."
+							}
+						],
+						"url": {
+							"raw": "https://api.qatouch.com/api/v1/getAllTestRuns/ZxL5",
+							"protocol": "https",
+							"host": [
+								"api",
+								"qatouch",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"getAllTestRuns",
+								"ZxL5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List all the Test Runs Results",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "api-token",
+								"type": "text",
+								"value": "{{api-token}}",
+								"description": "Your QA Touch domain."
+							},
+							{
+								"key": "domain",
+								"type": "text",
+								"value": "{{domain}}",
+								"description": "Your secret api-token."
+							}
+						],
+						"url": {
+							"raw": "https://api.qatouch.com/api/v1/testRunResults/ZxL5/DX97",
+							"protocol": "https",
+							"host": [
+								"api",
+								"qatouch",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"testRunResults",
+								"ZxL5",
+								"DX97"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List all the History of the Test Run results",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200 but output not as expected\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "api-token",
+								"value": "{{api-token}}",
+								"type": "text",
+								"description": "Your QA Touch domain."
+							},
+							{
+								"key": "domain",
+								"value": "{{domain}}",
+								"type": "text",
+								"description": "Your secret api-token."
+							},
+							{
+								"key": "projectKey",
+								"value": "ZxL5",
+								"type": "text",
+								"disabled": true
+							}
+						],
+						"url": {
+							"raw": "https://api.qatouch.com/api/v1/testRunResults/history/ZxL5/DX97/y4ZEk",
+							"protocol": "https",
+							"host": [
+								"api",
+								"qatouch",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"testRunResults",
+								"history",
+								"ZxL5",
+								"DX97",
+								"y4ZEk"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List all the status available for Test Runs",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "api-token",
+								"value": "{{api-token}}",
+								"type": "text",
+								"description": "Your QA Touch domain."
+							},
+							{
+								"key": "domain",
+								"value": "{{domain}}",
+								"type": "text",
+								"description": "Your secret api-token."
+							}
+						],
+						"url": {
+							"raw": "https://api.qatouch.com/api/v1/testRuns/getAvailableStatuses",
+							"protocol": "https",
+							"host": [
+								"api",
+								"qatouch",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"testRuns",
+								"getAvailableStatuses"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update the status of the Test Run Results",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"description": "Your QA Touch domain.",
+								"key": "api-token",
+								"type": "text",
+								"value": "{{api-token}}"
+							},
+							{
+								"description": "Your secret api-token.",
+								"key": "domain",
+								"type": "text",
+								"value": "{{domain}}"
+							}
+						],
+						"url": {
+							"raw": "https://api.qatouch.com/api/v1/testRunResults/status?status=Passed&projectKey=ZxL5&test_run=DX97&run_result=wQvEn",
+							"protocol": "https",
+							"host": [
+								"api",
+								"qatouch",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"testRunResults",
+								"status"
+							],
+							"query": [
+								{
+									"key": "status",
+									"value": "Passed",
+									"description": "Status to be updated."
+								},
+								{
+									"key": "projectKey",
+									"value": "ZxL5",
+									"description": "Project Key"
+								},
+								{
+									"key": "test_run",
+									"value": "DX97",
+									"description": "Test Run Key"
+								},
+								{
+									"key": "run_result",
+									"value": "wQvEn",
+									"description": "Test Run Result Key"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List of Users in the project available for Testing.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "Your QA Touch domain.",
+								"key": "api-token",
+								"type": "text",
+								"value": "{{api-token}}"
+							},
+							{
+								"description": "Your secret api-token.",
+								"key": "domain",
+								"type": "text",
+								"value": "{{domain}}"
+							}
+						],
+						"url": {
+							"raw": "https://api.qatouch.com/api/v1/testRun/availableUsers/ZxL5",
+							"protocol": "https",
+							"host": [
+								"api",
+								"qatouch",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"testRun",
+								"availableUsers",
+								"ZxL5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Test Run (all test cases)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"description": "Your QA Touch domain.",
+								"key": "api-token",
+								"type": "text",
+								"value": "{{api-token}}"
+							},
+							{
+								"description": "Your secret api-token.",
+								"key": "domain",
+								"type": "text",
+								"value": "{{domain}}"
+							}
+						],
+						"url": {
+							"raw": "https://api.qatouch.com/api/v1/testRun?projectKey=ZxL5&assignTo=g2bz&milestoneKey=RGQ1&testRun={testRun}",
+							"protocol": "https",
+							"host": [
+								"api",
+								"qatouch",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"testRun"
+							],
+							"query": [
+								{
+									"key": "projectKey",
+									"value": "ZxL5",
+									"description": "Project Key under which the Test Run to be created\n"
+								},
+								{
+									"key": "assignTo",
+									"value": "g2bz",
+									"description": "User key to which the Test Run to be assigned\n"
+								},
+								{
+									"key": "milestoneKey",
+									"value": "RGQ1",
+									"description": "Provide the milestone key to be assigned to Test Run\n"
+								},
+								{
+									"key": "testRun",
+									"value": "{testRun}",
+									"description": "Title of the Test Run\n"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Defects",
+			"item": [
+				{
+					"name": "List all defects for a project",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "api-token",
+								"type": "text",
+								"value": "{{api-token}}",
+								"description": "Your QA Touch domain."
+							},
+							{
+								"key": "domain",
+								"type": "text",
+								"value": "{{domain}}",
+								"description": "Your secret api-token."
+							}
+						],
+						"url": {
+							"raw": "https://api.qatouch.com/api/v1/getAllDefects/ZxL5",
+							"protocol": "https",
+							"host": [
+								"api",
+								"qatouch",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"getAllDefects",
+								"ZxL5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List all the Status Available for Defects",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "Your QA Touch domain.",
+								"key": "api-token",
+								"type": "text",
+								"value": "{{api-token}}"
+							},
+							{
+								"description": "Your secret api-token.",
+								"key": "domain",
+								"type": "text",
+								"value": "{{domain}}"
+							}
+						],
+						"url": {
+							"raw": "https://api.qatouch.com/api/v1/defects/status",
+							"protocol": "https",
+							"host": [
+								"api",
+								"qatouch",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"defects",
+								"status"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List all the Severity Available for Defects",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "Your QA Touch domain.",
+								"key": "api-token",
+								"type": "text",
+								"value": "{{api-token}}"
+							},
+							{
+								"description": "Your secret api-token.",
+								"key": "domain",
+								"type": "text",
+								"value": "{{domain}}"
+							}
+						],
+						"url": {
+							"raw": "https://api.qatouch.com/api/v1/defects/severity",
+							"protocol": "https",
+							"host": [
+								"api",
+								"qatouch",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"defects",
+								"severity"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List all the Issue Type Available for Defects.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "Your secret api-token.",
+								"key": "api-token",
+								"type": "text",
+								"value": "{{api-token}}"
+							},
+							{
+								"description": "Your QA Touch domain.",
+								"key": "domain",
+								"type": "text",
+								"value": "{{domain}}"
+							}
+						],
+						"url": {
+							"raw": "https://api.qatouch.com/api/v1/defects/issueType",
+							"protocol": "https",
+							"host": [
+								"api",
+								"qatouch",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"defects",
+								"issueType"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List all the Environment Available for Defects.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "Your QA Touch domain.",
+								"key": "domain",
+								"type": "text",
+								"value": "{{domain}}"
+							},
+							{
+								"description": "Your secret api-token.",
+								"key": "api-token",
+								"type": "text",
+								"value": "{{api-token}}"
+							}
+						],
+						"url": {
+							"raw": "https://api.qatouch.com/api/v1/defects/environment",
+							"protocol": "https",
+							"host": [
+								"api",
+								"qatouch",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"defects",
+								"environment"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Count of all Defects Available for the project ",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "api-token",
+								"type": "text",
+								"value": "{{api-token}}",
+								"description": "Your secret api-token."
+							},
+							{
+								"key": "domain",
+								"type": "text",
+								"value": "{{domain}}",
+								"description": "Your QA Touch domain."
+							}
+						],
+						"url": {
+							"raw": "https://api.qatouch.com/api/v1/count/allDefects/ZxL5",
+							"protocol": "https",
+							"host": [
+								"api",
+								"qatouch",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"count",
+								"allDefects",
+								"ZxL5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Defect",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"description": "Your secret api-token.",
+								"key": "api-token",
+								"type": "text",
+								"value": "{{api-token}}"
+							},
+							{
+								"description": "Your QA Touch domain.",
+								"key": "domain",
+								"type": "text",
+								"value": "{{domain}}"
+							}
+						],
+						"url": {
+							"raw": "https://api.qatouch.com/api/v1/defects?projectKey=ZxL5&priority=HIGH&issueSummary=NewDefect",
+							"protocol": "https",
+							"host": [
+								"api",
+								"qatouch",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"defects"
+							],
+							"query": [
+								{
+									"key": "projectKey",
+									"value": "ZxL5",
+									"description": "Project Key under which the Defect to be created"
+								},
+								{
+									"key": "priority",
+									"value": "HIGH",
+									"description": "Priority to be given to the Defect"
+								},
+								{
+									"key": "issueSummary",
+									"value": "NewDefect",
+									"description": "Title of the Defect\n"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Requirements",
+			"item": [
+				{
+					"name": "List all Requirements for the Projects",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "api-token",
+								"type": "text",
+								"value": "{{api-token}}",
+								"description": "Your secret api-token."
+							},
+							{
+								"key": "domain",
+								"type": "text",
+								"value": "{{domain}}",
+								"description": "Your QA Touch domain."
+							}
+						],
+						"url": {
+							"raw": "https://api.qatouch.com/api/v1/getAllRequirements/ZxL5",
+							"protocol": "https",
+							"host": [
+								"api",
+								"qatouch",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"getAllRequirements",
+								"ZxL5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Count of all Requirement for the project ",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "api-token",
+								"type": "text",
+								"value": "{{api-token}}",
+								"description": "Your secret api-token."
+							},
+							{
+								"key": "domain",
+								"type": "text",
+								"value": "{{domain}}",
+								"description": "Your QA Touch domain."
+							}
+						],
+						"url": {
+							"raw": "https://api.qatouch.com/api/v1/count/allRequirements/ZxL5",
+							"protocol": "https",
+							"host": [
+								"api",
+								"qatouch",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"count",
+								"allRequirements",
+								"ZxL5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "List of Requirement Documents created for your domain.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "api-token",
+								"type": "text",
+								"value": "{{api-token}}",
+								"description": "Your secret api-token."
+							},
+							{
+								"key": "domain",
+								"type": "text",
+								"value": "{{domain}}",
+								"description": "Your QA Touch domain."
+							}
+						],
+						"url": {
+							"raw": "https://api.qatouch.com/api/v1/getAllRequirementDocuments/ZxL5",
+							"protocol": "https",
+							"host": [
+								"api",
+								"qatouch",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"getAllRequirementDocuments",
+								"ZxL5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new Requirement Document in your project.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"description": "Your secret api-token.",
+								"key": "api-token",
+								"type": "text",
+								"value": "{{api-token}}"
+							},
+							{
+								"description": "Your QA Touch domain.",
+								"key": "domain",
+								"type": "text",
+								"value": "{{domain}}"
+							}
+						],
+						"url": {
+							"raw": "https://api.qatouch.com/api/v1/requirement/document?projectKey=ZxL5&releaseKey=RGQ1&title=NewTitle",
+							"protocol": "https",
+							"host": [
+								"api",
+								"qatouch",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"requirement",
+								"document"
+							],
+							"query": [
+								{
+									"key": "projectKey",
+									"value": "ZxL5",
+									"description": "Project Key under which the Requirement Document has to be created"
+								},
+								{
+									"key": "releaseKey",
+									"value": "RGQ1",
+									"description": "Provide the release key under which Requirement Document has to be created"
+								},
+								{
+									"key": "title",
+									"value": "NewTitle",
+									"description": "Title of the Requirement Document\n"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create a new Requirement in your project.",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"description": "Your secret api-token.",
+								"key": "api-token",
+								"type": "text",
+								"value": "{{api-token}}"
+							},
+							{
+								"description": "Your QA Touch domain.",
+								"key": "domain",
+								"type": "text",
+								"value": "{{domain}}"
+							}
+						],
+						"url": {
+							"raw": "https://api.qatouch.com/api/v1/requirement?projectKey=ZxL5&documentKey=Z8qq&title=NewTitle&desc=Mini Project",
+							"protocol": "https",
+							"host": [
+								"api",
+								"qatouch",
+								"com"
+							],
+							"path": [
+								"api",
+								"v1",
+								"requirement"
+							],
+							"query": [
+								{
+									"key": "projectKey",
+									"value": "ZxL5",
+									"description": "Project Key under which the Requirement has to be created"
+								},
+								{
+									"key": "documentKey",
+									"value": "Z8qq",
+									"description": "Provide the document key under which Requirement has to be created"
+								},
+								{
+									"key": "title",
+									"value": "NewTitle",
+									"description": "Title of the Requirement"
+								},
+								{
+									"key": "desc",
+									"value": "Mini Project",
+									"description": "Description of the Requirement"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"pm.collectionVariables.set(\"domain\", \"apidemo\");",
+					"pm.collectionVariables.set(\"api-token\", \"b3ebb47d91f541526182cf7cdb51aae20ebc46a45740130c3f17b0cf9ab3a152\");"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "api-token",
+			"value": ""
+		},
+		{
+			"key": "domain",
+			"value": ""
+		}
+	]
+}
